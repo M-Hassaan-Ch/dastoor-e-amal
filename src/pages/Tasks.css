@@ -1,0 +1,89 @@
+.tasks-container {
+  height: 100vh;
+  background-color: #121212;
+  color: white;
+}
+
+.sidebar {
+  border-right: 1px solid #2d2d2d;
+  overflow-y: auto;
+  background-color: #181818; /* Add this */
+}
+
+.main-content {
+  overflow-y: auto;
+  background-color: #121212; /* Add this */
+}
+
+.dark-modal .modal-content {
+  background-color: #1e1e1e;
+  color: white;
+}
+
+.dark-modal .btn-close {
+  filter: invert(1);
+}
+
+.list-group-item {
+  border-color: #2d2d2d;
+  transition: all 0.3s ease;
+}
+
+.list-group-item.active {
+  background-color: #0d6efd !important;
+  border-color: #0d6efd;
+}
+
+.list-group-item-action:hover {
+  background-color: #2d2d2d !important;
+}
+
+.completed-task {
+  opacity: 0.6;
+  background-color: #2d2d2d !important;
+  border-color: #3d3d3d !important;
+  text-decoration: line-through;
+}
+
+.badge {
+  font-weight: normal;
+  transition: all 0.2s ease;
+  padding: 0.4em 0.6em;
+  color: white !important; /* Force white text in badges */
+}
+.badge:hover {
+  filter: brightness(1.2);
+  transform: translateY(-1px);
+}
+.btn-outline-secondary {
+  border-color: #4a4a4a;
+  color: #8a8a8a;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #2d2d2d;
+}
+
+.form-control.bg-secondary {
+  background-color: #2d2d2d !important;
+  border-color: #4a4a4a;
+}
+
+.form-control:focus {
+  background-color: #3d3d3d;
+  border-color: #0d6efd;
+  box-shadow: none;
+  color: white;
+}
+
+.bg-dark {
+  background-color: #1a1a1a !important; /* Darker shade for modals */
+}
+
+.text-muted {
+  color: #6c757d !important; /* Original Bootstrap muted color */
+}
+
+.modal {
+  z-index: 1050 !important;
+}

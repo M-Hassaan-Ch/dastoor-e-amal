@@ -1,0 +1,456 @@
+/* LearningDashboard.css */
+:root {
+  --bg-color: #1a1a1a;
+  --card-bg: #2d2d2d;
+  --card-header: #333;
+  --text-color: #f0f0f0;
+  --text-secondary: #aaa;
+  --border-color: #444;
+  --accent-color: #0d6efd;
+  --accent-hover: #0b5ed7;
+  --danger-color: #dc3545;
+  --danger-hover: #bb2d3b;
+  --success-color: #198754;
+  --success-hover: #157347;
+  --warning-color: #ffc107;
+  --warning-hover: #ffca2c;
+}
+
+.learning-dashboard {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  width: 100%;
+  padding: 20px;
+  position: relative;
+  overflow: auto;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.dashboard-header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.dashboard-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.add-card {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.add-card:hover {
+  background-color: var(--accent-hover);
+}
+
+.clear-dashboard {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+.clear-dashboard:hover {
+  background-color: var(--danger-hover);
+}
+
+.save-dashboard {
+  background-color: var(--success-color);
+  color: white;
+}
+
+.save-dashboard:hover {
+  background-color: var(--success-hover);
+}
+
+.dashboard-content {
+  position: relative;
+  min-height: calc(100vh - 100px);
+  width: 100%;
+}
+
+/* Card Styles */
+.learning-card {
+  position: absolute;
+  width: 350px;
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  z-index: 1;
+  transition: box-shadow 0.3s;
+}
+
+.learning-card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.learning-card.dragging {
+  z-index: 10;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  opacity: 1 !important; /* Force opacity to 1 */
+}
+
+.card-header {
+  background-color: var(--card-header);
+  padding: 12px 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.drag-handle {
+  cursor: move;
+  color: var(--text-secondary);
+}
+
+.card-title {
+  margin: 0;
+  flex-grow: 1;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.card-actions {
+  display: flex;
+  gap: 5px;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.icon-button:hover {
+  color: var(--text-color);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.card-content {
+  padding: 15px;
+}
+
+.card-section {
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 1rem;
+  margin: 0 0 10px 0;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Day Items */
+.days-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.day-item {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.day-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.day-actions {
+  display: flex;
+  gap: 5px;
+}
+
+.day-content {
+  font-size: 0.9rem;
+  white-space: pre-wrap;
+}
+
+.day-edit {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.day-textarea {
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-color);
+  padding: 8px;
+  min-height: 80px;
+  resize: vertical;
+}
+
+/* Resource Links */
+.resources-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.resource-link {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.resource-content {
+  display: flex;
+  gap: 10px;
+  flex-grow: 1;
+  cursor: pointer;
+}
+
+.thumbnail-container {
+  position: relative;
+  width: 80px;
+  height: 45px;
+  border-radius: 4px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.video-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.play-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.resource-content:hover .play-overlay {
+  opacity: 1;
+}
+
+.resource-info {
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.resource-title {
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.resource-url {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.delete-resource {
+  flex-shrink: 0;
+}
+
+/* Nested Cards */
+.nested-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.nested-card-preview {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  padding: 10px;
+  width: calc(50% - 5px);
+}
+
+.nested-card-preview h5 {
+  margin: 0 0 5px 0;
+  font-size: 0.9rem;
+}
+
+.nested-card-stats {
+  display: flex;
+  gap: 10px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* Forms */
+.add-item-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: transparent;
+  border: 1px dashed var(--border-color);
+  color: var(--text-secondary);
+  padding: 8px;
+  width: 100%;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.add-item-button:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--text-color);
+}
+
+.add-day-form,
+.add-resource-form {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.resource-input {
+  width: 100%;
+  padding: 8px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-color);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.cancel-button {
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-button {
+  background-color: var(--accent-color);
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-button:hover {
+  background-color: var(--accent-hover);
+}
+
+.save-button {
+  background-color: var(--success-color);
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.save-button:hover {
+  background-color: var(--success-hover);
+}
+
+.edit-title {
+  display: flex;
+  gap: 8px;
+  flex-grow: 1;
+}
+
+.title-input {
+  flex-grow: 1;
+  padding: 4px 8px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .learning-card {
+    width: 300px;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .dashboard-actions {
+    width: 100%;
+  }
+
+  .action-button {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .nested-card-preview {
+    width: 100%;
+  }
+}
