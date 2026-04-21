@@ -1,70 +1,46 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+} from "react-router-dom";
 import LandingPage from "./LandingPage";
-import Login from "./pages/Login";
 import DailyTasks from "./pages/DailyTasks";
 import Journal from "./pages/Journal";
 import LifeCalendar from "./pages/LifeCalendar";
 import DailyRoutine from "./pages/DailyRoutine";
 import LearningDashboard from "./pages/LearningDashboard";
-import SignUp from './pages/SignUp';
-import Navbar from './components/Navbar';
-import ProtectedRoute from './components/ProtectedRoute';
-import { authService } from './services/authService';
-import './App.css';
+import Navbar from "./components/Navbar";
+import "./App.css";
 
-function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(authService.isAuthenticated());
-
-  useEffect(() => {
-    const handleAuthChange = () => {
-      setIsAuthenticated(authService.isAuthenticated());
-    };
-
-    window.addEventListener('authStateChange', handleAuthChange);
-    return () => window.removeEventListener('authStateChange', handleAuthChange);
-  }, []);
+function AppContent() {
+  const location = useLocation();
 
   return (
-    <Router>
-      {isAuthenticated && <Navbar />}
-      <div className={`app-container ${isAuthenticated ? 'with-navbar' : ''}`}>
+    <>
+      <Navbar />
+      <div
+        className={`app-container with-navbar ${location.pathname === "/" ? "home-page-active" : ""}`}
+      >
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/login" element={
-            isAuthenticated ? <Navigate to="/daily-tasks" /> : <Login />
-          } />
-          <Route path="/signup" element={
-            isAuthenticated ? <Navigate to="/daily-tasks" /> : <SignUp />
-          } />
-          <Route path="/daily-tasks" element={
-            <ProtectedRoute>
-              <DailyTasks />
-            </ProtectedRoute>
-          } />
-          <Route path="/journal" element={
-            <ProtectedRoute>
-              <Journal />
-            </ProtectedRoute>
-          } />
-          <Route path="/life-calendar" element={
-            <ProtectedRoute>
-              <LifeCalendar />
-            </ProtectedRoute>
-          } />
-          <Route path="/daily-routine" element={
-            <ProtectedRoute>
-              <DailyRoutine />
-            </ProtectedRoute>
-          } />
-          <Route path="/learning-dashboard" element={
-            <ProtectedRoute>
-              <LearningDashboard />
-            </ProtectedRoute>
-          } />
+          <Route path="/daily-tasks" element={<DailyTasks />} />
+          <Route path="/journal" element={<Journal />} />
+          <Route path="/life-calendar" element={<LifeCalendar />} />
+          <Route path="/daily-routine" element={<DailyRoutine />} />
+          <Route path="/learning-dashboard" element={<LearningDashboard />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </div>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 }

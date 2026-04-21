@@ -1,39 +1,34 @@
 .app-container {
-    min-height: 100vh;
-    transition: padding-top 0.2s ease;
+  min-height: 100vh;
 }
 
-.app-container.with-navbar {
-    padding-top: 45px; /* Match new navbar height */
-}
 
-/* Smooth scrolling for the whole app */
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-    width: 6px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+  background: #f1f1f1;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 3px;
+  background: #888;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+  background: #555;
 }
 
 /* Global styles */
 body {
-    margin: 0;
-    padding: 0;
-    background: #121212;
-    color: #fff;
+  margin: 0;
+  padding: 0;
+  background: #121212;
+  color: #fff;
 }
